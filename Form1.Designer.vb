@@ -181,7 +181,7 @@ Partial Class Form1
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Vita_H 3.73 v1.02"
+        Me.Text = "Vita_H 3.73 v1.03"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

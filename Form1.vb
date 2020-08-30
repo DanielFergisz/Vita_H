@@ -130,4 +130,8 @@ Public Class Form1
             TB1.Clear()
         End If
     End Sub
+
+    Private Sub S3_Click(sender As Object, e As EventArgs) Handles S3.Click
+        Form2.Show()
+    End Sub
 End Class
