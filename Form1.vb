@@ -92,8 +92,9 @@ Public Class Form1
             Log1.AppendText(Environment.NewLine + "Moving files..")
             My.Computer.FileSystem.CopyDirectory("PCSG90096", "C:\Users\" & UN.Text & "\Documents\PS Vita\APP\" + dirName.Text + "\PCSG90096", True)
             Log1.AppendText(Environment.NewLine + "Done.")
+            S3.Enabled = True
         Else
-            Log1.AppendText(Environment.NewLine + "Error 0x64452 !!") 'Brak spathowanych plików
+            Log1.AppendText(Environment.NewLine + "Error 0x64452 !!") 'Brak spatchowanych plików
         End If
     End Sub
     '#############################################################################################################################################
@@ -101,6 +102,7 @@ Public Class Form1
         TB1.Visible = True
         S1.Enabled = True
         S2.Enabled = True
+        S3.Enabled = True
     End Sub
 
     Private Sub TB1_TextChanged(sender As Object, e As EventArgs) Handles TB1.TextChanged
@@ -111,9 +113,11 @@ Public Class Form1
             Key.Visible = True
             Str1.Visible = True
             Log1.AppendText(Environment.NewLine + "God Mode Enabled")
+            TB1.Clear()
         End If
         If TB1.Text = "$info" Then
-            MsgBox("Error 0x64452 - Brak spathowanych plików" + vbCrLf + "Error 0x45950 - Brak pliku exe w folderze z aplikacją" + vbCrLf + "Error 0x33940 - Brak wygenerowanego klucza")
+            TB1.Clear()
+            MsgBox("Error 0x64452 - Brak spatchowanych plików" + vbCrLf + "Error 0x45950 - Brak pliku exe w folderze z aplikacją" + vbCrLf + "Error 0x33940 - Brak wygenerowanego klucza")
         End If
         If TB1.Text = "$user" Then
             dirName.Visible = False
@@ -123,6 +127,7 @@ Public Class Form1
             Str1.Visible = False
             Log1.Clear()
             Log1.AppendText(Me.Text)
+            TB1.Clear()
         End If
     End Sub
 End Class
