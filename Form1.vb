@@ -65,33 +65,51 @@ Public Class Form1
                 Threading.Thread.Sleep(1000)
                 If File.Exists("psvimg-create.exe") = True Then
                     Process.Start("cmd", "/c psvimg-create -n app -K " + Key.Text + " app PCSG90096/app").WaitForExit()
-                    Log1.AppendText(Environment.NewLine + "App.. ok")
+                    Log1.AppendText(Environment.NewLine + "App...")
+                    Log1.SelectionColor = Color.ForestGreen
+                    Log1.AppendText("OK")
+                    Log1.SelectionColor = Color.Empty
                     Process.Start("cmd", "/c psvimg-create -n appmeta -K " + Key.Text + " appmeta PCSG90096/appmeta").WaitForExit()
-                    Log1.AppendText(Environment.NewLine + "AppMeta.. ok")
+                    Log1.AppendText(Environment.NewLine + "AppMeta...")
+                    Log1.SelectionColor = Color.ForestGreen
+                    Log1.AppendText("OK")
+                    Log1.SelectionColor = Color.Empty
                     Process.Start("cmd", "/c psvimg-create -n license -K " + Key.Text + " license PCSG90096/license").WaitForExit()
-                    Log1.AppendText(Environment.NewLine + "License.. ok")
+                    Log1.AppendText(Environment.NewLine + "License...")
+                    Log1.SelectionColor = Color.ForestGreen
+                    Log1.AppendText("OK")
+                    Log1.SelectionColor = Color.Empty
                     Process.Start("cmd", "/c psvimg-create -n savedata -K " + Key.Text + " savedata PCSG90096/savedata").WaitForExit()
-                    Log1.AppendText(Environment.NewLine + "SaveData.. ok")
+                    Log1.AppendText(Environment.NewLine + "SaveData...")
+                    Log1.SelectionColor = Color.ForestGreen
+                    Log1.AppendText("OK")
+                    Log1.SelectionColor = Color.Empty
                     Log1.AppendText(Environment.NewLine + "Done.")
                 Else
                     Log1.AppendText(Environment.NewLine + "Error 0x45950") 'Brak pliku exe w folderze z aplikacją
                 End If
             End If
             S2.Enabled = True
+        Else
+            Log1.SelectionColor = Color.Red
+            Log1.AppendText(" False !!")
+            Log1.SelectionColor = Color.Empty
+            MsgBox("Please connect PS VITA and Run QCMA first !!")
         End If
-        Log1.SelectionColor = Color.Red
-        Log1.AppendText(" False !!")
-        Log1.SelectionColor = Color.Empty
-        MsgBox("Please connect PS VITA and Run QCMA first !!")
     End Sub
 
     Private Sub S2_Click(sender As Object, e As EventArgs) Handles S2.Click
 
         If File.Exists("PCSG90096\app\app.psvimg") = True Then
             Log1.AppendText(Environment.NewLine + "")
-            Log1.AppendText(Environment.NewLine + "Moving files..")
+            Log1.AppendText(Environment.NewLine + "Moving files...")
             My.Computer.FileSystem.CopyDirectory("PCSG90096", "C:\Users\" & UN.Text & "\Documents\PS Vita\APP\" + dirName.Text + "\PCSG90096", True)
+            Log1.SelectionColor = Color.ForestGreen
+            Log1.AppendText("OK")
+            Log1.SelectionColor = Color.Empty
             Log1.AppendText(Environment.NewLine + "Done.")
+            Log1.AppendText(Environment.NewLine + "")
+            Log1.AppendText(Environment.NewLine + "Go To: Step 3")
             S3.Enabled = True
         Else
             Log1.AppendText(Environment.NewLine + "Error 0x64452 !!") 'Brak spatchowanych plików
